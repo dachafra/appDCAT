@@ -1,0 +1,5 @@
+<p>Validar RDF </p>
+<!--<textarea rows="20" cols="70" name="text" id="textInput" (change)="detectText()" > </textarea>-->
+<textarea rows="20" cols="70" [(ngModel)]="currentQuery" (change)="detectText()" ></textarea>
+<br>
+<button type="button" class="btn btn-success" (click)="Validate()" >Validate!</button>
