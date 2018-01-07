@@ -1,0 +1,474 @@
+{
+	"catalog":[
+		{
+		"http://www.w3.org/ns/dcat#dataset":[
+			{
+			"type": "mandatory",
+			"cardinality": "1..n"
+			}
+		],
+		"http://purl.org/dc/terms/description":[
+			{
+			"type": "mandatory",
+			"cardinality": "1..n"
+			}
+		],
+		"http://purl.org/dc/terms/publisher":[
+			{
+			"type": "mandatory",
+			"cardinality": "1..1"
+			}
+		],
+		"http://purl.org/dc/terms/spatial":[
+			{
+			"type": "mandatory",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/title":[
+			{
+			"type": "mandatory",
+			"cardinality": "1..n"
+			}
+		],
+		"http://xmlns.com/foaf/0.1/homepage":[
+	    {
+      "type": "recommended",
+      "cardinality": "0..1"
+      }
+		],
+		"http://purl.org/dc/terms/language":[
+			{
+			"type": "recommended",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/license":[
+			{
+			"type": "recommended",
+			"cardinality": "0..1"
+			}
+		],
+		"http://purl.org/dc/terms/issued":[
+			{
+			"type": "recommended",
+			"cardinality": "0..1"
+			}
+		],
+        "http://www.w3.org/ns/dcat#themeTaxonomy":[
+			{
+			"type": "recommended",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/modified":[
+			{
+			"type": "recommended",
+			"cardinality": "0..1"
+			}
+		],
+		"http://purl.org/dc/terms/hasPart":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/isPartOf":[
+			{
+			"type": "optional",
+			"cardinality": "0..1"
+			}
+		],
+		"http://www.w3.org/ns/dcat#record": [
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+        "http://purl.org/dc/terms/rights":[
+			{
+			"type": "optional",
+			"cardinality": "0..1"
+			}
+		]
+		}
+	],
+	"dataset":[
+	    {
+        "http://purl.org/dc/terms/description":[
+			{
+			"type": "mandatory",
+			"cardinality": "1..n"
+			}
+		],
+		"http://purl.org/dc/terms/title":[
+			{
+			"type": "mandatory",
+			"cardinality": "1..n"
+			}
+		],
+		"http://purl.org/dc/terms/spatial":[
+			{
+			"type": "mandatory",
+			"cardinality": "0..n"
+			}
+		],
+		"http://www.w3.org/ns/dcat#keyword":[
+			{
+			"type": "mandatory",
+			"cardinality": "0..n"
+			}
+		],
+		"http://www.w3.org/ns/dcat#contactPoint":[
+			{
+			"type": "recommended",
+			"cardinality": "0..n"
+			}
+		],
+		"http://www.w3.org/ns/dcat#distribution":[
+			{
+			"type": "recommended",
+			"cardinality": "0..n"
+			}
+		],
+        "http://purl.org/dc/terms/pulisher":[
+			{
+			"type": "recommended",
+			"cardinality": "0..1"
+			}
+		],
+		"http://www.w3.org/ns/dcat#theme":[
+			{
+			"type": "recommended",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/accessRights":[
+			{
+			"type": "optional",
+			"cardinality": "0..1"
+			}
+		],
+		"http://purl.org/dc/terms/conformsTo":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://xmlns.com/foaf/0.1/page":[
+            {
+            "type": "optional",
+            "cardinality": "0..n"
+            }
+		],
+		"http://purl.org/dc/terms/accrualPeriodicity":[
+			{
+			"type": "optional",
+			"cardinality": "0..1"
+			}
+		],
+		"http://purl.org/dc/terms/hasVersion":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/identifier":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/isVersionOf":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://www.w3.org/ns/dcat#landingPage":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/language":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://www.w3.org/ns/adms#identifier":[
+            {
+            "type": "optional",
+			"cardinality": "0..n"
+            }
+		],
+		"http://purl.org/dc/terms/provenance":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/relation":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/issued":[
+			{
+			"type": "optional",
+			"cardinality": "0..1"
+			}
+		],
+		"http://www.w3.org/ns/adms#sample":[
+            {
+            "type": "optional",
+			"cardinality": "0..n"
+            }
+		],
+		"http://purl.org/dc/terms/source":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/temporal":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/type":[
+			{
+			"type": "optional",
+			"cardinality": "0..1"
+			}
+		],
+		"http://purl.org/dc/terms/modified":[
+			{
+			"type": "optional",
+			"cardinality": "0..1"
+			}
+		],
+		"http://www.w3.org/2002/07/owl#versionInfo":[
+            {
+            "type": "optional",
+			"cardinality": "0..1"
+            }
+		],
+		"http://www.w3.org/ns/adms#versionNotes":[
+            {
+            "type": "optional",
+			"cardinality": "0..n"
+            }
+		]
+	    }
+	],
+	"organization":[
+	    {
+		"http://xmlns.com/foaf/0.1/name":[
+            {
+            "type": "mandatory",
+            "cardinality": "1..n"
+            }
+		],
+		"http://purl.org/dc/terms/type":[
+			{
+			"type": "recommended",
+			"cardinality": "0..1"
+			}
+		]
+		}
+	],
+	"distribution":[
+	    {
+        "http://www.w3.org/ns/dcat#accessURL":[
+			{
+			"type": "mandatory",
+			"cardinality": "1..n"
+			}
+		],
+		"http://purl.org/dc/terms/description":[
+			{
+			"type": "recommended",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/format":[
+			{
+			"type": "recommended",
+			"cardinality": "0..1"
+			}
+		],
+		"http://purl.org/dc/terms/license":[
+			{
+			"type": "recommended",
+			"cardinality": "0..1"
+			}
+		],
+		"http://www.w3.org/ns/dcat#byteSize":[
+			{
+			"type": "optional",
+			"cardinality": "0..1"
+			}
+		],
+		"http://spdx.org/rdf/terms#checksum":[
+            {
+            "type": "optional",
+            "cardinality": "0..1"
+            }
+		],
+		"http://xmlns.com/foaf/0.1/page":[
+            {
+            "type": "optional",
+            "cardinality": "0..n"
+            }
+		],
+		 "http://www.w3.org/ns/dcat#downloadURL":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/language":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/conformsTo":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://www.w3.org/ns/dcat#mediaType":[
+			{
+			"type": "optional",
+			"cardinality": "0..1"
+			}
+		],
+		"http://purl.org/dc/terms/issued":[
+			{
+			"type": "optional",
+			"cardinality": "0..1"
+			}
+		],
+		"http://purl.org/dc/terms/rights":[
+			{
+			"type": "optional",
+			"cardinality": "0..1"
+			}
+		],
+		"http://www.w3.org/ns/adms#status":[
+            {
+            "type": "optional",
+			"cardinality": "0..1"
+            }
+		],
+		"http://purl.org/dc/terms/title":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/modified":[
+			{
+			"type": "optional",
+			"cardinality": "0..1"
+			}
+		]
+		}
+	],
+	"catalogrecord":[
+	    {
+        "http://xmlns.com/foaf/0.1/primaryTopic":[
+            {
+            "type": "mandatory",
+            "cardinality": "1..1"
+            }
+		],
+		"http://purl.org/dc/terms/modified":[
+			{
+			"type": "mandatory",
+			"cardinality": "1..1"
+			}
+		],
+		"http://purl.org/dc/terms/conformsTo":[
+			{
+			"type": "recommended",
+			"cardinality": "0..1"
+			}
+		],
+		"http://www.w3.org/ns/adms#status":[
+            {
+            "type": "recommended",
+			"cardinality": "0..1"
+            }
+		],
+		"http://purl.org/dc/terms/issued":[
+			{
+			"type": "recommended",
+			"cardinality": "0..1"
+			}
+		],
+		"http://purl.org/dc/terms/description":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/language":[
+			{
+			"type": "optional",
+			"cardinality": "0..n"
+			}
+		],
+		"http://purl.org/dc/terms/source":[
+			{
+			"type": "optional",
+			"cardinality": "0..1"
+			}
+		],
+		"http://purl.org/dc/terms/title":[
+			{
+			"type": "optional",
+			"cardinality": "0..1"
+			}
+		]
+		}
+	],
+	"checksum":[
+	    {
+        "http://spdx.org/rdf/terms#algorithm":[
+            {
+            "type": "mandatory",
+            "cardinality": "1..1"
+            }
+        ],
+        "http://spdx.org/rdf/terms#checksumValue":[
+            {
+            "type": "mandatory",
+            "cardinality": "1..1"
+            }
+        ]
+        }
+	],
+	"periodoftime":[
+	    {
+        "http://schema.org/startDate":[
+            {
+            "type": "optional",
+            "cardinality": "0..1"
+            }
+        ],
+        "http://schema.org/endDate":[
+            {
+            "type": "optional",
+            "cardinality": "0..1"
+            }
+        ]
+        }
+	]
+}

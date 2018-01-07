@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Archivo} from './file.modal';
-// import * as rdf from 'rdf-parser-rdfxml/index';
-//import { RdfXmlParser } from 'rdf-parser-rdfxml';
+
 import * as rdf from 'rdflib';
 
 // import * as fs from 'fs-extra';

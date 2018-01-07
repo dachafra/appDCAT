@@ -3,3 +3,13 @@
 <textarea rows="20" cols="70" [(ngModel)]="currentQuery" (change)="detectText()" ></textarea>
 <br>
 <button type="button" class="btn btn-success" (click)="Validate()" >Validate!</button>
+
+<div id='ErrorParse' #abc> </div>
+<div id='ErrorParseCatalog' #abd> </div>
+<div id='warningRecomendedCatalog' style="color:yellow" #abe> </div>
+
+<div id='ErrorParseDataset' #abf> </div>
+<div id='warningRecomendedDataset' style="color:yellow" #abg> </div>
+
+<div id='ErrorParseOrganization' #abh> </div>
+<div id='warningRecomendedOrganization' style="color:yellow" #abi> </div>
