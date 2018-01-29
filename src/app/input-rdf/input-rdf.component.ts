@@ -1,6 +1,7 @@
 import { Component, OnInit , ViewChild , ElementRef } from '@angular/core';
-import * as xmldom from 'xmldom/dom-parser.js';
+
 import * as rdf from 'rdflib';
+  import * as xmldom from 'xmldom/dom-parser.js';
 import * as Catalog from './Catalog.modal';
 import * as Dataset from './Dataset.modal';
 import * as Organization from './Organization.modal';
@@ -29,18 +30,18 @@ export class InputRdfComponent implements OnInit {
   detectText() {
     this.RdfData = this.currentQuery;
   }
-  Validate(): boolean {
+  Validate(): void {
+
+    (<HTMLDivElement>document.getElementById('ErrorParse')).innerText = '';
+    this.RdfData = this.currentQuery;
     let store = rdf.graph();
     let contentType = 'application/rdf+xml';
     let baseUrl = 'http://IoFTriples.com';
-
-
-  //  try{
-
   rdf.parse(this.RdfData, store, baseUrl, contentType );
 
   console.log('Tipo Error =>  ', xmldom.errr());
   if (xmldom.errr() === undefined) {
+
     (<HTMLDivElement>document.getElementById('ErrorParse')).innerText = 'Parseado con éxito';
     let stms = store.statementsMatching(undefined, undefined , undefined);
 
@@ -61,10 +62,15 @@ export class InputRdfComponent implements OnInit {
      console.log("el parser del Organization");
      Organization_.existeOrganization();
 
-     return true;
+
+     //return true;
   }else {
+    // (<HTMLDivElement>document.getElementById('ErrorParse')).innerText = '';
+
   (<HTMLDivElement>document.getElementById('ErrorParse')).innerText = xmldom.errr();
-  return false;
+
+  //  xmldom.errr()='';
+ // return false;
    }
 
 }

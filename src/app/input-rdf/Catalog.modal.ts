@@ -2,6 +2,21 @@
   export class Catalog {
     objetosIndex :any;
     sujetosIndex : any;
+    ListCatalog : string[] = ["http://www.w3.org/ns/dcat#dataset",
+                              "http://purl.org/dc/terms/description",
+                              "http://purl.org/dc/terms/publisher",
+                              "http://purl.org/dc/terms/spatial",
+                              "http://purl.org/dc/terms/title",
+                              "http://xmlns.com/foaf/0.1/homepage",
+                              "http://purl.org/dc/terms/language",
+                              "http://purl.org/dc/terms/license",
+                              "http://purl.org/dc/terms/issued",
+                              "http://www.w3.org/ns/dcat#themeTaxonomy",
+                              "http://purl.org/dc/terms/modified",
+                              "http://purl.org/dc/terms/hasPart",
+                              "http://purl.org/dc/terms/isPartOf",
+                              "http://www.w3.org/ns/dcat#record",
+                              "http://purl.org/dc/terms/rights"];
     constructor(objectIndex , subjectIndex){
       this.objetosIndex = objectIndex;
       this.sujetosIndex = subjectIndex;
@@ -9,13 +24,16 @@
 
     existeCatalog() : any {
 
+
       let VecesCatalog:number = 0;
       let ValSubject:string;
+      let Err_ExisteCatalog:string ='';
       for(let i in this.objetosIndex) {
         //console.log("KKKK " + i);
         for ( let j in this.objetosIndex[i]){
-        //  console.log("HHHH " + j);
+         //console.log("HHHH " + j);
           if (this.objetosIndex[i][j].object.value.toLowerCase() == 'http://www.w3.org/ns/dcat#catalog'){
+            //console.log(" MADRIDSOSSAI " + this.objetosIndex[i].length);
             ValSubject = this.objetosIndex[i][j].subject.value;
             console.log(this.objetosIndex[i][j].object.value);
             console.log('Dcat:Cataolog  existe ');
@@ -27,6 +45,8 @@
 
       if (VecesCatalog === 0 ) {
         console.error("Error Catalog => Es obligario que exista una clase 'Catalog'");
+        Err_ExisteCatalog =`Catalog class doesn't exist , it's a mandatory Class => it should be implemented`;
+        (<HTMLDivElement>document.getElementById('ExisteCatalog')).innerText =  Err_ExisteCatalog ;
         return;
       }else {
         this.MandatoryCatalog(`<${ValSubject}>`);
@@ -59,6 +79,19 @@
       let IgualIssued:number =0;
       let IgualThemeTaxonomy:number =0;
       let IgualModified:number =0;
+        for ( let n in this.sujetosIndex[Val_Subject]){
+        if (n != '0'){
+
+         if(!this.ListCatalog.includes(this.sujetosIndex[Val_Subject][n].predicate.value)) {
+            //console.log("kldkdkdp , "+z)
+            console.log(this.sujetosIndex[Val_Subject][n].predicate.value + ` => it's a wrong TransportDcat-AP Vocabulary, it should be reviewed `);
+            (<HTMLDivElement>document.getElementById('WrongVocabulary')).innerText +=`${this.sujetosIndex[Val_Subject][n].predicate.value}  => it's a wrong TransportDcat-AP Vocabulary in Catalog, it should be reviewed ` +'\n';
+
+          }
+      }
+        //console.log("jlfkldkdld");
+        //console.log(z);
+      }
          for (let m in jsonComp['catalog'][0]) {
 
            if ( jsonComp['catalog'][0][m][0].type === 'mandatory') {
@@ -79,7 +112,6 @@
                   }
                }
 
-                //
             }
 
             console.log('Recommended nodos');
@@ -105,6 +137,23 @@
             }
 
            }
+           if (IgualDataset >=1 ){
+             for(let i in this.objetosIndex) {
+               for ( let j in this.objetosIndex[i]){
+                 if (this.objetosIndex[i][j].object.value.toLowerCase() == 'http://www.w3.org/ns/dcat#dataset'){
+                   let longitud = this.objetosIndex[i].length;
+                   if (longitud === IgualDataset ){
+                     console.log(IgualDataset + " DATASETs definidos " );
+                   }else {
+                    // console.error(`${IgualDataset} dataset(s) defined in Catalog, only ${longitud} dataset(s) described `);
+                    (<HTMLDivElement>document.getElementById('ErrorDefinicionCatalog')).innerText = `${IgualDataset} dataset(s) defined in Catalog, only ${longitud} dataset(s) described `;
+
+                   }
+               }
+
+             }
+           }
+         }
            if (IgualDataset === 0){
              ErrorDataset = `Error Propiedad "dataset" => propiedad obligaria en la Clase Catalog (o esta mal escrito o no exista )`;
            }

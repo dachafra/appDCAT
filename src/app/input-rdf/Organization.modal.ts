@@ -2,10 +2,15 @@ import * as jsonComp from '../templateTransportDCAT-AP.json';
 export class Organization {
   objetosIndex :any;
   sujetosIndex : any;
+  listOrg: string[] = ["http://xmlns.com/foaf/0.1/name",
+                       "http://purl.org/dc/terms/type",
+                       "http://www.w3.org/2004/02/skos/core#prefLabel",
+                       "http://www.w3.org/2004/02/skos/core#altLabel"];
   constructor(objectIndex , subjectIndex){
     this.objetosIndex = objectIndex;
     this.sujetosIndex = subjectIndex;
   }
+
   existeOrganization() : any {
     let VecesOrganization:number = 0;
     let ValSubject:string;
@@ -25,21 +30,34 @@ export class Organization {
 
     if (VecesOrganization === 0 ) {
       console.error("Error Organization => Es obligario que exista una clase 'Organization'");
+      (<HTMLDivElement>document.getElementById('ExisteOrganization')).innerText = "Error Organization => Es obligario que exista una clase 'Organization'" ;
       return;
     }else {
       console.log('ValSubject' + ValSubject);
-      this.MandatoryCatalog(`<${ValSubject}>`);
+      this.MandatoryOrganization(`<${ValSubject}>`);
     return true;
     }
   }
 
-  MandatoryCatalog(Val_Subject): void {
+  MandatoryOrganization(Val_Subject): void {
     // mandatory
     let ErrorName:string='';
     let IgualName: number = 0;
     // Recomended
     let WarningType:string ='';
     let IgualType:number =0;
+
+    for ( let n in this.sujetosIndex[Val_Subject]){
+    if (n != '0'){
+
+     if(!this.listOrg.includes(this.sujetosIndex[Val_Subject][n].predicate.value)) {
+        //console.log("kldkdkdp , "+z)
+        console.error(this.sujetosIndex[Val_Subject][n].predicate.value + ` => it's a wrong TransportDcat-AP Vocabulary defined in organization, it should be reviewed `);
+        (<HTMLDivElement>document.getElementById('WrongVocabulary')).innerText +=`${this.sujetosIndex[Val_Subject][n].predicate.value}  => it's a wrong TransportDcat-AP Vocabulary in organization, it should be reviewed ` +'\n';
+
+      }
+  }
+}
        for (let m in jsonComp['organization'][0]) {
          if ( jsonComp['organization'][0][m][0].type === 'mandatory') {
          for ( let l in this.sujetosIndex[Val_Subject]) {
@@ -51,7 +69,7 @@ export class Organization {
                 }
              }
           }
-          console.log('Recommended nodos Organization');
+          console.log('Recommended nodos DATASET');
       if ( jsonComp['organization'][0][m][0].type === 'recommended') {
             for ( let l in this.sujetosIndex[Val_Subject]) {
                if (this.sujetosIndex[Val_Subject][l].predicate.value === m) {
@@ -66,11 +84,11 @@ export class Organization {
          if (IgualName === 0){
            ErrorName = 'Error Propiedad "Name" => propiedad obligatoria en clase Organization (o esta mal escrito o no exista )';
           }
-            (<HTMLDivElement>document.getElementById('ErrorParseDataset')).innerText = ErrorName;
+            (<HTMLDivElement>document.getElementById('ErrorParseOrganization')).innerText = ErrorName;
                 // Recomended Warnign
          if (IgualType ===0){
            WarningType = 'Warnining Type En Organization , No existe es recomendado que se implementa'  ;
                   }
-            (<HTMLDivElement>document.getElementById('warningRecomendedDataset')).innerText = WarningType ;
+            (<HTMLDivElement>document.getElementById('warningRecomendedOrganization')).innerText = WarningType ;
           }
    }

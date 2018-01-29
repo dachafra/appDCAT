@@ -1,16 +1,23 @@
-<p>
-  upload works!
+<div style="background-color:#bde8dd;">
+  <p class="text-center">
+Validate TransportDCAT-AP uploading a file !
 </p>
 <br>
 <div class="col-md-8">
 <form>
+
   <div class="uploader">
-    <input name="file" type="file" (change)="detectFiles($event)" >
+    <input class="selectArchivo" name="file" type="file" (change)="detectFiles($event)" >
   </div>
   <div class="text-center">
-    <button type="button" class="btn btn-success" (click)="Validate()">Validar Archivo</button>
+    <button type="button" class="btn btn-success boton" (click)="Validate()">Validar Archivo</button>
   </div>
+
+
 </form>
+
+
+</div>
 </div>
 <!--<div class="col-md-8">
   <div class="uploader" >

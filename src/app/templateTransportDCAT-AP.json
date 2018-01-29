@@ -131,7 +131,7 @@
 			"cardinality": "0..n"
 			}
 		],
-        "http://purl.org/dc/terms/pulisher":[
+        "http://purl.org/dc/terms/publisher":[
 			{
 			"type": "recommended",
 			"cardinality": "0..1"

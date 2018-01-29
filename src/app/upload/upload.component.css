@@ -1,9 +1,33 @@
 .uploader {
-  background-color: #ea6112;
-  color: white;
-  width: 100%;
+  background: linear-gradient(to right, #3DDAAE , #0fa7cc);
+  color: black;
+  width: 50%;
+  margin-left:25%;
   height: 160px;
   padding-top: 40px;
   text-aligh: center;
+  border-radius:5px;
 
 }
+
+
+.boton{
+  border-radius: 5px;
+  background-color: #10a8cc;
+  padding: 5px 10px;
+  color: white;
+  margin-top:15px;
+}
+
+
+.text-center{
+  text-align: center;
+
+}
+
+.selectArchivo{
+  padding: 15px 30px 15px 25%;
+  text-align: center !important;
+}
+
+

@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #289adb;
+  background: linear-gradient(to right, #3DDAAE , #0fa7cc);
 }
 
 #list1 li {
@@ -22,4 +22,8 @@
 
 #list1 .active {
   background-color: #4CAF50;
+}
+.ancho{/** barra de navegacón **/
+
+  /** margin-left:25%;**/
 }
