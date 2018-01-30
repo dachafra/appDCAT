@@ -107,6 +107,8 @@ MandatoryDataset(Val_Subject): boolean {
   let IgualKeyword: number = 0;
   let IgualSpatial: number = 0;
   let IgualTitle: number = 0;
+  let objectValueKeywords: string[] = [];
+  let adminunitlevelExist: string = '';
   // Recomended
   let WarningContactPoint:string ='';
   let WarningDistribution:string = '';
@@ -137,6 +139,11 @@ MandatoryDataset(Val_Subject): boolean {
             IgualDescription++;
           } if(m.endsWith('keyword') ){
             IgualKeyword++;
+            objectValueKeywords.push(this.sujetosIndex[Val_Subject][l].object.value.toLowerCase());
+            /*if (objectValueKeyword.startsWith("adminunitlevel") || objectValueKeyword === 'bus' || objectValueKeyword === 'stops'){
+              console.log(objectValueKeyword +  'Esto esta bien ');
+            }*/
+
           } if(m.endsWith('spatial') ){
             IgualSpatial++;
           } if(m.endsWith('title') ){
@@ -145,7 +152,7 @@ MandatoryDataset(Val_Subject): boolean {
         }
       }
     }
-
+console.log("Lista Keywords " + objectValueKeywords);
     console.log('Recommended nodos DATASET');
     if ( jsonComp['dataset'][0][m][0].type === 'recommended') {
       for ( let l in this.sujetosIndex[Val_Subject]) {
@@ -173,19 +180,45 @@ MandatoryDataset(Val_Subject): boolean {
   }
   if (IgualKeyword === 0 ){
     ErrorKeyword = 'TransportDCAT-AP Error in Dataset Class, Dom "Keyword" not defined';
-    (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText += ErrorKeyword+'\n'
+    (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText += ErrorKeyword+'\n';
   }
-  if (IgualKeyword === 1 ){
-    ErrorKeyword = 'TransportDCAT-AP Error in Dataset Class, Dom "Keyword" not defined';
-(<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText += ErrorKeyword+'\n'
+  if (IgualKeyword < 3 ){
+    ErrorKeyword = 'TransportDCAT-AP Error in Dataset Class, Dom "Keyword" should be defined At least 3 times';
+(<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText += ErrorKeyword+'\n';
+  }
+  if (IgualKeyword >= 3 ){
+    if (!objectValueKeywords.includes('bus')) {
+      (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=`TransportDCAT-AP Error in Dataset Class The Keyword [Bus] not defined in Dataset` +'\n';
+    }if (!objectValueKeywords.includes('stops')){
+      (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=`TransportDCAT-AP Error in Dataset Class The Keyword [stops] not defined in Dataset` +'\n';
+    }if (!objectValueKeywords.includes('spain') && !objectValueKeywords.includes('belgium') ){
+      (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=`TransportDCAT-AP Error in Dataset Class The Keyword [Belgium or Spain ] not defined in Dataset` +'\n';
+    }
+    for (let key in objectValueKeywords ){
+      if(objectValueKeywords[key].startsWith('adminunitlevel')){
+         adminunitlevelExist += 'ok';
+      }else {
+        console.log('hjdhjhd');
+      }
+    }
+    if (adminunitlevelExist != 'ok'){
+      (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=`TransportDCAT-AP Error in Dataset Class The Keyword [adminunitlevel] not defined in Dataset` +'\n';
+    }
+  /*  for(let key in objectValueKeywords ){
+      if ((objectValueKeywords[key] === 'bus') || (objectValueKeywords[key] === 'stops') || (objectValueKeywords[key].startsWith('adminunitlevel')) || (objectValueKeywords[key] === 'spain') || (objectValueKeywords[key] === 'belgium')){
+        console.log ( (objectValueKeywords[key]) + ' Esta Bien ');
+      }else {
+        (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=`` +'\n';
+      }
+    }*/
   }
   if (IgualSpatial === 0){
     ErrorSpatial = 'TransportDCAT-AP Error in Dataset Class, Dom "Spatial" not defined';
-    (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText += ErrorSpatial+'\n'
+    (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText += ErrorSpatial+'\n';
   }
   if (IgualTitle === 0){
     ErrorTitle = 'TransportDCAT-AP Error in Dataset Class, Dom "Title" not defined';
-    (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText += ErrorTitle+'\n'
+    (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText += ErrorTitle+'\n';
   }
 
   // Recomended Warnign
