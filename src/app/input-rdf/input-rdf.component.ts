@@ -7,9 +7,6 @@ import * as Dataset from './Dataset.modal';
 import * as Organization from './Organization.modal';
 import { Observable } from 'rxjs/Rx';
 
-
-
-
 @Component({
   selector: 'app-input-rdf',
   templateUrl: './input-rdf.component.html',
@@ -33,16 +30,22 @@ export class InputRdfComponent implements OnInit {
   Validate(): void {
 
     (<HTMLDivElement>document.getElementById('ErrorParse')).innerText = '';
+    (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText = '';
+    (<HTMLDivElement>document.getElementById('ParserTransportDCAT2')).innerText = '';
     this.RdfData = this.currentQuery;
     let store = rdf.graph();
     let contentType = 'application/rdf+xml';
     let baseUrl = 'http://IoFTriples.com';
+
+
   rdf.parse(this.RdfData, store, baseUrl, contentType );
 
   console.log('Tipo Error =>  ', xmldom.errr());
-  if (xmldom.errr() === undefined) {
+  //undefined
+  if (xmldom.errr() === '' ) {
 
-    (<HTMLDivElement>document.getElementById('ErrorParse')).innerText = 'Parseado con éxito';
+    (<HTMLDivElement>document.getElementById('ErrorParse')).innerText = 'RDF/XML parsed Successfully';
+
     let stms = store.statementsMatching(undefined, undefined , undefined);
 
      console.log(stms);
@@ -58,7 +61,7 @@ export class InputRdfComponent implements OnInit {
      console.log("Aqui se el parser de Catalog");
      Catalogo.existeCatalog();
      console.log("Aqui se el parser de Dataset");
-     Dataset_.existeDataset();
+    Dataset_.existeDataset();
      console.log("el parser del Organization");
      Organization_.existeOrganization();
 
@@ -68,6 +71,8 @@ export class InputRdfComponent implements OnInit {
     // (<HTMLDivElement>document.getElementById('ErrorParse')).innerText = '';
 
   (<HTMLDivElement>document.getElementById('ErrorParse')).innerText = xmldom.errr();
+
+
 
   //  xmldom.errr()='';
  // return false;

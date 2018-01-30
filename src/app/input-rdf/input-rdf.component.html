@@ -1,25 +1,34 @@
-<p>Validar RDF </p>
+  <p class="text-center">
+  Validar RDF
+</p>
 <!--<textarea rows="20" cols="70" name="text" id="textInput" (change)="detectText()" > </textarea>-->
-<textarea rows="20" cols="70" [(ngModel)]="currentQuery" (change)="detectText()" ></textarea>
-<br>
-<button type="button" class="btn btn-success" (click)="Validate()" >Validate!</button>
+<div class="inputText">
+  <textarea rows="25" cols="100" [(ngModel)]="currentQuery" (change)="detectText()" ></textarea>
+</div>
 
+<div class="text-center">
+<button type="button" class="btn btn-success boton" (click)="Validate()" >Validate!</button>
+</div>
 <!-- Catalog -->
 
-<div id='WrongVocabulary' #acc> </div>
+
 <div id='ErrorParse' #abc> </div>
+<p id='PaserDCAT'> </p>
+<div id='ParserTransportDCAT' #acc> </div>
+<div id='ParserTransportDCAT2' style="color:#f38708" #acd></div>
+<!--<div id='WrongVocabulary' #acc> </div>
 <div id='ExisteCatalog' #ctl> </div>
 <div id='ErrorParseCatalog' #abd> </div>
 <div id='ErrorDefinicionCatalog' #aca> </div>
 <div id='warningRecomendedCatalog' style="color:#f38708" #abe> </div>
 
-<!-- Dataset -->
+ Dataset
 <div id='ExisteDataset' #ctt> </div>
 <div id='ErrorParseDataset' #abf> </div>
 <div id='ErrorDefinicionDataset' #acb> </div>
 <div id='warningRecomendedDataset' style="color:#f38708" #abg> </div>
 
-<!-- Organization-->
+ Organization
 <div id='ExisteOrganization' #ctf> </div>
 <div id='ErrorParseOrganization' #abh> </div>
-<div id='warningRecomendedOrganization' style="color:#f38708" #abi> </div>
+<div id='warningRecomendedOrganization' style="color:#f38708" #abi> </div>-->

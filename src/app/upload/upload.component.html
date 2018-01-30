@@ -7,7 +7,7 @@ Validate TransportDCAT-AP uploading a file !
 <form>
 
   <div class="uploader">
-    <input class="selectArchivo" name="file" type="file" (change)="detectFiles($event)" >
+    <input #myInput class="selectArchivo" name="file" type="file"  (change)="detectFiles($event)" >
   </div>
   <div class="text-center">
     <button type="button" class="btn btn-success boton" (click)="Validate()">Validar Archivo</button>
@@ -19,12 +19,7 @@ Validate TransportDCAT-AP uploading a file !
 
 </div>
 </div>
-<!--<div class="col-md-8">
-  <div class="uploader" >
-
-    <input name="file" type="file" (change)="detectFiles($event)" )>
-  </div>
-  <div class="text-center">
-      <button type="button" class="btn btn-success" (click)="Validate()">Validar Archivo</button>
-  </div>
-</div>-->
+<div id='ErrorParse' #abc> </div>
+<p id='PaserDCAT'> </p>
+<div id='ParserTransportDCAT' #acc> </div>
+<div id='ParserTransportDCAT2' style="color:#f38708" #acd></div>

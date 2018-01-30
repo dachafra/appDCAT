@@ -45,8 +45,8 @@
 
       if (VecesCatalog === 0 ) {
         console.error("Error Catalog => Es obligario que exista una clase 'Catalog'");
-        Err_ExisteCatalog =`Catalog class doesn't exist , it's a mandatory Class => it should be implemented`;
-        (<HTMLDivElement>document.getElementById('ExisteCatalog')).innerText =  Err_ExisteCatalog ;
+        Err_ExisteCatalog = "FatalError Catalog=> 'Catalog' Class Not Defined";
+        (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=  Err_ExisteCatalog ;
         return;
       }else {
         this.MandatoryCatalog(`<${ValSubject}>`);
@@ -79,13 +79,14 @@
       let IgualIssued:number =0;
       let IgualThemeTaxonomy:number =0;
       let IgualModified:number =0;
-        for ( let n in this.sujetosIndex[Val_Subject]){
+      for ( let n in this.sujetosIndex[Val_Subject]){
         if (n != '0'){
 
          if(!this.ListCatalog.includes(this.sujetosIndex[Val_Subject][n].predicate.value)) {
+           let Wrong = this.sujetosIndex[Val_Subject][n].predicate.value;
             //console.log("kldkdkdp , "+z)
-            console.log(this.sujetosIndex[Val_Subject][n].predicate.value + ` => it's a wrong TransportDcat-AP Vocabulary, it should be reviewed `);
-            (<HTMLDivElement>document.getElementById('WrongVocabulary')).innerText +=`${this.sujetosIndex[Val_Subject][n].predicate.value}  => it's a wrong TransportDcat-AP Vocabulary in Catalog, it should be reviewed ` +'\n';
+            console.error(this.sujetosIndex[Val_Subject][n].predicate.value + ` => it's a wrong TransportDcat-AP Vocabulary, it should be reviewed `);
+            (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=`${this.sujetosIndex[Val_Subject][n].predicate.value} => Fatal Error in Catalog, it's not TransportDcat-AP Vocabulary `  +'\n';
 
           }
       }
@@ -146,7 +147,7 @@
                      console.log(IgualDataset + " DATASETs definidos " );
                    }else {
                     // console.error(`${IgualDataset} dataset(s) defined in Catalog, only ${longitud} dataset(s) described `);
-                    (<HTMLDivElement>document.getElementById('ErrorDefinicionCatalog')).innerText = `${IgualDataset} dataset(s) defined in Catalog, only ${longitud} dataset(s) described `;
+                    (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText += `${IgualDataset} dataset(s) defined in Catalog, only ${longitud} dataset(s) described ` + '\n';
 
                    }
                }
@@ -155,44 +156,55 @@
            }
          }
            if (IgualDataset === 0){
-             ErrorDataset = `Error Propiedad "dataset" => propiedad obligaria en la Clase Catalog (o esta mal escrito o no exista )`;
+             ErrorDataset = 'TransportDCAT-AP Error in Catalog Class, Dom "Dataset" not defined';
+             (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=  ErrorDataset +'\n';
            }
            if (IgualDescription === 0){
-             ErrorDescription = `Error Propiedad "Description" => propiedad obligatoria en clase Catalog (o esta mal escrito o no exista )`;
+             ErrorDescription = 'TransportDCAT-AP Error in Catalog Class, Dom "Description" not defined';
+             (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=  ErrorDescription +'\n';
             }
             if (IgualPublisher === 0){
-              ErrorPublisher = `Error Propiedad "Publisher" => propiedad obligatoria en clase Catalog (o esta mal escrito o no exista )`;
+              ErrorPublisher = 'TransportDCAT-AP Error in Catalog Class, Dom "Publisher" not defined';
+              (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=  ErrorPublisher +'\n';
              }
              if (IgualSpatial === 0){
-               ErrorSpatial = `Error Propiedad "Spatial" => propiedad obligatoria en clase Catalog (o esta mal escrito o no exista )`;
+               ErrorSpatial = 'TransportDCAT-AP Error in Catalog Class, Dom "Spatial" not defined';
+               (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=  ErrorSpatial +'\n';
               }
               if (IgualTitle === 0){
-                ErrorTitle = `Error Propiedad "Title" => propiedad obligatoria en clase Catalog (o esta mal escrito o no exista )`;
+                ErrorTitle = 'TransportDCAT-AP Error in Catalog Class, Dom "Title" not defined';
+                (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=  ErrorTitle +'\n';
                  }
-                 (<HTMLDivElement>document.getElementById('ErrorParseCatalog')).innerText =  ErrorDataset +'\n'+ ErrorDescription+'\n' +ErrorPublisher +
-                  '\n' + ErrorSpatial + '\n'+ ErrorTitle;
+                 /*(<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=  ErrorDataset +'\n'+ ErrorDescription+'\n' +ErrorPublisher +
+                  '\n' + ErrorSpatial + '\n'+ ErrorTitle;*/
                   // Recomended Warnign
                    if (IgualHomepage ===0){
-                   WarningHomePage = ` Warnining HomePage En Catalogo , No existe es recomendado que se implementa `;
+                   WarningHomePage = 'TransportDCAT-AP Warnining in Catalog , Dom "Homepage" not defined';
+                   (<HTMLDivElement>document.getElementById('ParserTransportDCAT2')).innerText +=  WarningHomePage +'\n';
                     }
                     if (IgualLanguage ===0){
-                      WarningLanguage=` Warnining Language En Catalogo , No existe y es recomendado que se implementa`;
+                      WarningLanguage='TransportDCAT-AP Warnining in Catalog , Dom "Language" not defined';
+                      (<HTMLDivElement>document.getElementById('ParserTransportDCAT2')).innerText +=  WarningLanguage +'\n';
                     }
                     if(IgualLicense === 0){
-                      WarningLicense = ` Warnining License en Catalogo , No existe y es recomendado que se implementa`;
+                      WarningLicense = 'TransportDCAT-AP Warnining in Catalog , Dom "License" not defined';
+                      (<HTMLDivElement>document.getElementById('ParserTransportDCAT2')).innerText +=  WarningLicense +'\n';
                     }
                     if (IgualIssued === 0){
-                      WarningIssued =` Warnining Issued En Catalogo , No existe y es recomendado que se implementa`;
+                      WarningIssued ='TransportDCAT-AP Warnining in Catalog , Dom "Issued" not defined';
+                      (<HTMLDivElement>document.getElementById('ParserTransportDCAT2')).innerText +=  WarningIssued +'\n';
                     }
                     if (IgualThemeTaxonomy === 0){
-                      WarningThemeTaxonomy =` Warnining ThemeTaxonomy En Catalogo , No existe y es recomendado que se implementa`;
+                      WarningThemeTaxonomy ='TransportDCAT-AP Warnining in Catalog , Dom "ThemeTaxonomy" not defined';
+                      (<HTMLDivElement>document.getElementById('ParserTransportDCAT2')).innerText +=  WarningThemeTaxonomy +'\n';
                     }
                     if (IgualModified === 0){
-                      WarningModified =` Warnining Modified En Catalogo , No existe y es recomendado que se implementa`;
+                      WarningModified ='TransportDCAT-AP Warnining in Catalog , Dom "Modified" not defined';
+                      (<HTMLDivElement>document.getElementById('ParserTransportDCAT2')).innerText +=  WarningModified +'\n';
                     }
 
-                  (<HTMLDivElement>document.getElementById('warningRecomendedCatalog')).innerText =  WarningHomePage +'\n'+ WarningLanguage+'\n' +WarningLicense +
-                   '\n' + WarningIssued + '\n'+ WarningThemeTaxonomy + '\n' + WarningModified;
+                  /*(<HTMLDivElement>document.getElementById('ParserTransportDCAT2')).innerText +=  WarningHomePage +'\n'+ WarningLanguage+'\n' +WarningLicense +
+                   '\n' + WarningIssued + '\n'+ WarningThemeTaxonomy + '\n' + WarningModified;*/
 
           }
           NodesCatalog(): void {
