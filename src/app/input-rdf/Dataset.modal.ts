@@ -142,7 +142,7 @@ MandatoryDataset(Val_Subject): boolean {
             IgualDescription++;
           } if(m.endsWith('keyword') ){
             IgualKeyword++;
-            objectValueKeywords.push(this.sujetosIndex[Val_Subject][l].object.value.toLowerCase());
+            objectValueKeywords.push(this.sujetosIndex[Val_Subject][l].object.value);
             /*if (objectValueKeyword.startsWith("adminunitlevel") || objectValueKeyword === 'bus' || objectValueKeyword === 'stops'){
               console.log(objectValueKeyword +  'Esto esta bien ');
             }*/
@@ -191,7 +191,7 @@ console.log("Lista Keywords " + objectValueKeywords);
   }
   if (IgualKeyword >= 3 ){
     for(let val in objectValueKeywords ){
-      if (!this.ListKeywordsRoute.includes(objectValueKeywords[val]) && !this.ListKeyWordsType.includes(objectValueKeywords[val]) && !this.ListCountry.includes(objectValueKeywords[val]) && !objectValueKeywords[val].startsWith('adminunitlevel') ) {
+      if (!this.ListKeywordsRoute.includes(objectValueKeywords[val].toLowerCase()) && !this.ListKeyWordsType.includes(objectValueKeywords[val].toLowerCase()) && !this.ListCountry.includes(objectValueKeywords[val].toLowerCase()) && !objectValueKeywords[val].toLowerCase().startsWith('adminunitlevel') ) {
         (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=`TransportDCAT-AP Error in Dataset Class, ${objectValueKeywords[val]} is not a KeyWord ` +'\n';
       }
 
