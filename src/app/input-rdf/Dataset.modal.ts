@@ -31,6 +31,9 @@ export class Dataset {
   "http://purl.org/dc/terms/modified",
   "http://www.w3.org/2002/07/owl#versionInfo",
   "http://www.w3.org/ns/adms#versionNotes"];
+  ListKeywordsRoute: string[] = ['tram','subway','rail','bus','ferry','cable car','gondola','funicular'];
+  ListKeyWordsType: string[] = ['agency','serviceperiod','fareattribute','farerule','frequency','feedinfo','shape','shapepoint','stops','stoptime','route','transfer','trip','schedule','loader'];
+  ListCountry: string[] = ['spain','belgium'];
   constructor(objectIndex , subjectIndex){
     this.objetosIndex = objectIndex;
     this.sujetosIndex = subjectIndex;
@@ -187,14 +190,13 @@ console.log("Lista Keywords " + objectValueKeywords);
 (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText += ErrorKeyword+'\n';
   }
   if (IgualKeyword >= 3 ){
-    if (!objectValueKeywords.includes('bus')) {
-      (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=`TransportDCAT-AP Error in Dataset Class The Keyword [Bus] not defined in Dataset` +'\n';
-    }if (!objectValueKeywords.includes('stops')){
-      (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=`TransportDCAT-AP Error in Dataset Class The Keyword [stops] not defined in Dataset` +'\n';
-    }if (!objectValueKeywords.includes('spain') && !objectValueKeywords.includes('belgium') ){
-      (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=`TransportDCAT-AP Error in Dataset Class The Keyword [Belgium or Spain ] not defined in Dataset` +'\n';
-    }
-    for (let key in objectValueKeywords ){
+    for(let val in objectValueKeywords ){
+      if (!this.ListKeywordsRoute.includes(objectValueKeywords[val]) && !this.ListKeyWordsType.includes(objectValueKeywords[val]) && !this.ListCountry.includes(objectValueKeywords[val]) && !objectValueKeywords[val].startsWith('adminunitlevel') ) {
+        (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=`TransportDCAT-AP Error in Dataset Class, ${objectValueKeywords[val]} is not a KeyWord ` +'\n';
+      }
+
+  }
+    /*for (let key in objectValueKeywords ){
       if(objectValueKeywords[key].startsWith('adminunitlevel')){
          adminunitlevelExist += 'ok';
       }else {
@@ -203,7 +205,7 @@ console.log("Lista Keywords " + objectValueKeywords);
     }
     if (adminunitlevelExist != 'ok'){
       (<HTMLDivElement>document.getElementById('ParserTransportDCAT')).innerText +=`TransportDCAT-AP Error in Dataset Class The Keyword [adminunitlevel] not defined in Dataset` +'\n';
-    }
+    }*/
   /*  for(let key in objectValueKeywords ){
       if ((objectValueKeywords[key] === 'bus') || (objectValueKeywords[key] === 'stops') || (objectValueKeywords[key].startsWith('adminunitlevel')) || (objectValueKeywords[key] === 'spain') || (objectValueKeywords[key] === 'belgium')){
         console.log ( (objectValueKeywords[key]) + ' Esta Bien ');
